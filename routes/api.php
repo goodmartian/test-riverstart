@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ProductController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +23,13 @@ Route::group([
     Route::post('/', [ProductController::class, 'create']);
     Route::put('{product}', [ProductController::class, 'update']);
     Route::delete('{product}', [ProductController::class, 'delete']);
+});
+
+Route::group([
+    'as' => 'categories.',
+    'prefix' => 'categories'
+], function () {
+    Route::post('/', [CategoryController::class, 'create']);
+    Route::put('{category}', [CategoryController::class, 'update']);
+    Route::delete('{category}', [CategoryController::class, 'delete']);
 });
